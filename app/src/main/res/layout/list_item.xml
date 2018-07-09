@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/TeamRanks"
+        android:layout_width="@dimen/width_list_item"
+        android:layout_height="@dimen/height_list_item"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="ranks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_team_logo"
+        android:layout_width="@dimen/width_list_item"
+        android:layout_height="@dimen/height_list_item"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/TeamRanks"
+        app:layout_constraintTop_toTopOf="@id/TeamRanks"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/TeamName"
+        android:layout_width="150dp"
+        android:layout_height="@dimen/height_list_item"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:text="Team Name"
+        app:layout_constraintStart_toEndOf="@+id/image_team_logo"
+        app:layout_constraintTop_toTopOf="@id/image_team_logo" />
+
+    <TextView
+        android:id="@+id/game_played"
+        android:layout_width="@dimen/width_list_item"
+        android:layout_height="@dimen/height_list_item"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:text="Game Played"
+        app:layout_constraintStart_toEndOf="@+id/TeamName"
+        app:layout_constraintTop_toTopOf="@id/TeamName" />
+
+    <TextView
+        android:id="@+id/TeamPoints"
+        android:text="Points"
+        android:layout_width="@dimen/width_list_item"
+        android:layout_height="@dimen/height_list_item"
+        android:layout_marginLeft="@dimen/list_item_margin_left"
+        app:layout_constraintStart_toEndOf="@id/game_played"
+        app:layout_constraintTop_toTopOf="@id/game_played"/>
+
+
+</android.support.constraint.ConstraintLayout>
