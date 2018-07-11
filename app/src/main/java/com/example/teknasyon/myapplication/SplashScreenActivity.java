@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class splash_screen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
     private int SLEEP_TIMER = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,9 @@ public class splash_screen extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Intent intent = new Intent(splash_screen.this, MainActivity.class);
+            Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
             startActivity(intent);
-            splash_screen.this.finish();
+            SplashScreenActivity.this.finish();
         }
     }
 }
