@@ -9,6 +9,7 @@ import android.widget.Adapter;
 public class SectionsPagerAdapter extends FragmentPagerAdapter  {
 
         public SectionsPagerAdapter(FragmentManager fm) {
+
             super(fm);
         }
 
@@ -29,7 +30,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter  {
 
         @Override
         public int getCount() {
-
             return 4;
         }
 

@@ -5,13 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.google.gson.Gson;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,11 +28,12 @@ import retrofit2.Response;
 public class PlaceholderFragment extends Fragment implements OnTeamClickListener {
     private static final String ARG_SECTION_NUMBER = "section_number";
     private RecyclerView postList;
-    private TeamAdapter adapter;
+    public TeamAdapter adapter;
 
     RestInterface restInterface;
 
-    List<Team> teamList = new ArrayList<>();
+    ArrayList<Team> teamList = new ArrayList<>();
+    ArrayList<Team> firstItems = new ArrayList<>();
 
     public PlaceholderFragment() {
     }
@@ -40,27 +44,28 @@ public class PlaceholderFragment extends Fragment implements OnTeamClickListener
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         postList = rootView.findViewById(R.id.postList);
+
         return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setHasOptionsMenu(true);
 
         restInterface = ApiClient.getClient().create(RestInterface.class);
 
         List<Team> teamList = TeamPreference.readTeams();
         if (teamList != null && teamList.isEmpty()) {
             this.teamList.addAll(teamList);
+            this.firstItems.addAll(teamList);
         } else {
             int ligId = getArguments().getInt(ARG_SECTION_NUMBER);
             callService(ligId);
@@ -80,7 +85,8 @@ public class PlaceholderFragment extends Fragment implements OnTeamClickListener
                 Collections.sort(response.body());
                 TeamPreference.writeTeams(response.body());
 
-                PlaceholderFragment.this.teamList.addAll(response.body());
+                teamList.addAll(response.body());
+                firstItems.addAll(response.body());
                 adapter.notifyDataSetChanged();
             }
 
@@ -96,7 +102,47 @@ public class PlaceholderFragment extends Fragment implements OnTeamClickListener
         Intent teamContent = new Intent(getActivity(), TeamDetailActivity.class);
         teamContent.putExtra("deger", team.team_id);
         startActivity(teamContent);
-
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+        MenuItem item = menu.findItem(R.id.action_search);
+
+
+        SearchView sv = new SearchView(getContext());
+        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
+        MenuItemCompat.setActionView(item, sv);
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                System.out.println("search query submit");
+                List<Team> search_list = new ArrayList<>();
+
+                for (Team team : teamList) {
+                    if (team.getTeamName().toLowerCase().contains(query)) {
+                        search_list.add(team);
+                    }
+                }
+                adapter.setItems(search_list);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                System.out.println("tap");
+                return false;
+            }
+        });
+        sv.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                adapter.setItems(firstItems);
+                return false;
+            }
+        });
+    }
+
 
 }

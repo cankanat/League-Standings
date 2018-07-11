@@ -46,4 +46,7 @@ public class Team implements Comparable<Team> {
         }
     }
 
+    public String getTeamName() {
+        return teamName;
+    }
 }

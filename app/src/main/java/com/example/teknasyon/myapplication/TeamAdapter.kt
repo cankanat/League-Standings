@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 
-class TeamAdapter(private val context: Context, private val items: List<Team>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
+class TeamAdapter(private val context: Context, private val items: ArrayList<Team>)
+    : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
 
     private var teamClickListener: OnTeamClickListener? = null
 
@@ -29,9 +30,14 @@ class TeamAdapter(private val context: Context, private val items: List<Team>) :
         holder.team_name.text = item.teamName
         holder.game_played.text = item.overallGp
         holder.points.text = item.points
-
-
     }
+
+    fun setItems(items: List<Team>) {
+        this.items.clear()
+        this.items.addAll(items)
+        this.notifyDataSetChanged()
+    }
+
 
     override fun getItemCount(): Int {
         return items.size
@@ -44,7 +50,6 @@ class TeamAdapter(private val context: Context, private val items: List<Team>) :
         internal var team_name: TextView
         internal var game_played: TextView
         internal var points: TextView
-
 
 
         init {

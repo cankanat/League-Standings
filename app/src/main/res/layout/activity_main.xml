@@ -63,7 +63,26 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_marginBottom="106dp"/>
+
+    <ImageView
+        android:id="@+id/right_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="right"
+        android:clickable="true"
+        android:layout_gravity="right|bottom"
+        android:background="@drawable/right_arrow"/>
+
+    <ImageView
+        android:id="@+id/left_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="left"
+        android:clickable="true"
+        android:layout_gravity="left|bottom"
+        android:background="@drawable/left_arrow" />
 
 
 </android.support.design.widget.CoordinatorLayout>
