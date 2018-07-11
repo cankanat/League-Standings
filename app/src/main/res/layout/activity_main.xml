@@ -84,5 +84,13 @@
         android:layout_gravity="left|bottom"
         android:background="@drawable/left_arrow" />
 
+    <ImageView
+        android:id="@+id/save_button"
+        android:clickable="true"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_gravity="center|bottom"
+        android:background="@drawable/save_button" />
+
 
 </android.support.design.widget.CoordinatorLayout>
