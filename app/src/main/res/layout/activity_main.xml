@@ -67,7 +67,7 @@
         android:layout_marginBottom="106dp"/>
 
     <ImageView
-        android:id="@+id/right_button"
+        android:id="@+id/right_ImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="right"
@@ -76,7 +76,7 @@
         android:background="@drawable/right_arrow"/>
 
     <ImageView
-        android:id="@+id/left_button"
+        android:id="@+id/left_ImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="left"
@@ -85,7 +85,7 @@
         android:background="@drawable/left_arrow" />
 
     <ImageView
-        android:id="@+id/save_button"
+        android:id="@+id/save_Button"
         android:clickable="true"
         android:layout_width="51dp"
         android:layout_height="51dp"
