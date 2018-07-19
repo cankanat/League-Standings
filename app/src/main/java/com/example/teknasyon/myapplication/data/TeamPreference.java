@@ -1,18 +1,16 @@
-package com.example.teknasyon.myapplication;
+package com.example.teknasyon.myapplication.data;
 
 
 import android.content.SharedPreferences;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
+import com.example.teknasyon.myapplication.network.model.Team;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 public class TeamPreference {
 

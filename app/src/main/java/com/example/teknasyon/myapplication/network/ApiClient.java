@@ -1,4 +1,4 @@
-package com.example.teknasyon.myapplication;
+package com.example.teknasyon.myapplication.network;
 
 import com.google.gson.Gson;
 
@@ -25,6 +25,6 @@ public class ApiClient {
 
         return retrofit;
 
-    }//ApiClient.class
+    }
 
 }

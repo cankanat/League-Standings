@@ -1,4 +1,4 @@
-package com.example.teknasyon.myapplication;
+package com.example.teknasyon.myapplication.data;
 
 import android.app.Application;
 import android.content.Context;

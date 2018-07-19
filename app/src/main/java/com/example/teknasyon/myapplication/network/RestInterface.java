@@ -1,4 +1,7 @@
-package com.example.teknasyon.myapplication;
+package com.example.teknasyon.myapplication.network;
+
+import com.example.teknasyon.myapplication.network.model.Team;
+import com.example.teknasyon.myapplication.network.model.TeamDetails;
 
 import java.util.List;
 
