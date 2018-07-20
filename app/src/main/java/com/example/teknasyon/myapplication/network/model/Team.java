@@ -1,4 +1,4 @@
-package com.example.teknasyon.myapplication;
+package com.example.teknasyon.myapplication.network.model;
 
 
 import android.support.annotation.NonNull;

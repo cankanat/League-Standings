@@ -1,4 +1,4 @@
-package com.example.teknasyon.myapplication;
+package com.example.teknasyon.myapplication.network.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
